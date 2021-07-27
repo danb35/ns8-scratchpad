@@ -84,18 +84,19 @@ import IconService from "@/mixins/icon";
 import LoginService from "@/mixins/login";
 import StorageService from "@/mixins/storage";
 import NsInlineNotification from "@/components/NsInlineNotification";
-import NsButton from "@/components/NsButton";
+// import NsButton from "@/components/NsButton"; ////
 import { mapState } from "vuex";
 import { mapActions } from "vuex";
 import to from "await-to-js";
 import WebSocketService from "@/mixins/websocket";
-import UtilService from "@/mixins/util";
+import UtilService from "@/../public/libs/util.js";
+// import QueryParamService from "@/../public/libs/queryParamLib"; ////
 
-let nethserver = window.nethserver;
+// let ns8lib = window.ns8lib; ////
 
 export default {
   name: "Login",
-  components: { NsInlineNotification, NsButton },
+  components: { NsInlineNotification },
   mixins: [
     IconService,
     LoginService,
@@ -171,7 +172,7 @@ export default {
         // emit login event to initialize webapp (connect ws, invoke api...)
         this.$root.$emit("login");
 
-        const queryParams = nethserver.getQueryParamsForCore();
+        const queryParams = this.getQueryParamsForCore();
 
         if (queryParams.redirect) {
           // redirect to initially requested URL

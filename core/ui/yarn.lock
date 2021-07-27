@@ -3407,6 +3407,13 @@ alphanum-sort@^1.0.0:
   resolved "https://registry.npmjs.org/alphanum-sort/-/alphanum-sort-1.0.2.tgz"
   integrity sha1-l6ERlkmyEa0zaR2fn0hqjsn74KM=
 
+andrelib@0.0.9:
+  version "0.0.9"
+  resolved "https://registry.yarnpkg.com/andrelib/-/andrelib-0.0.9.tgz#b9f1c374fa8cded0a21306746b7c90d9f26177df"
+  integrity sha512-ra9RCU6MXGFx7NPpPnm+6j0+RhuaAgcLkCxpIb2WLMpP6Gyycr0vYi07rPn2sIe/h0w2VwhKm/cKdctxdEOeYA==
+  dependencies:
+    core-js "^3.15.2"
+
 ansi-align@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/ansi-align/-/ansi-align-3.0.0.tgz#b536b371cf687caaef236c18d3e21fe3797467cb"
@@ -5035,6 +5042,11 @@ core-js@^3.0.4, core-js@^3.8.2:
   version "3.13.1"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.13.1.tgz#30303fabd53638892062d8b4e802cac7599e9fb7"
   integrity sha512-JqveUc4igkqwStL2RTRn/EPFGBOfEZHxJl/8ej1mXJR75V3go2mFF4bmUYkEIT1rveHKnkUlcJX/c+f1TyIovQ==
+
+core-js@^3.15.2:
+  version "3.15.2"
+  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.15.2.tgz#740660d2ff55ef34ce664d7e2455119c5bdd3d61"
+  integrity sha512-tKs41J7NJVuaya8DxIOCnl8QuPHx5/ZVbFo1oKgVl1qHFBBrDctzQGtuLjPpRdNTWmKPH6oEvgN/MUID+l485Q==
 
 core-js@^3.6.5:
   version "3.12.1"

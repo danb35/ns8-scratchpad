@@ -9,15 +9,21 @@
 </template>
 
 <script>
+//// REMOVE ANDRELIB FROM PACKAGE.JSON
+
 import AppSideMenu from "./components/AppSideMenu";
 import AppMobileSideMenu from "./components/AppMobileSideMenu";
 import { mapActions } from "vuex";
+// import QueryParamService from "@/../../../core/ui/public/libs//queryParamLib.js"; ////
 
-let nethserver = window.nethserver;
+// let ns8lib = window.ns8lib; ////
+
+let queryParamLib = window.queryParamLib;
 
 export default {
   name: "App",
   components: { AppSideMenu, AppMobileSideMenu /*Ns8TestLibrarySample*/ },
+  // mixins: [QueryParamService], ////
   created() {
     // register to events
     this.$root.$on("appNavigation", this.onAppNavigation);
@@ -33,7 +39,7 @@ export default {
       false
     );
 
-    const queryParams = nethserver.getQueryParamsForApp();
+    const queryParams = queryParamLib.getQueryParamsForApp();
     const requestedPage = queryParams.page || "status";
 
     if (requestedPage != "status") {

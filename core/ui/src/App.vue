@@ -11,6 +11,8 @@
 </template>
 
 <script>
+//// REMOVE ANDRELIB FROM PACKAGE.JSON
+
 import ShellHeader from "./components/ShellHeader";
 import SideMenu from "./components/SideMenu";
 import MobileSideMenu from "./components/MobileSideMenu";
@@ -24,7 +26,7 @@ import LoginService from "@/mixins/login";
 import TaskErrorModal from "@/components/TaskErrorModal";
 import TaskService from "@/mixins/task";
 import NotificationService from "@/mixins/notification";
-import UtilService from "@/mixins/util";
+import UtilService from "@/../public/libs/util.js";
 
 export default {
   name: "App",

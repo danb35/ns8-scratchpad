@@ -35,6 +35,9 @@ Vue.use(InfiniteLoading, {
   },
 });
 
+import andrelib from "andrelib"; ////
+Vue.use(andrelib);
+
 // i18n
 import VueI18n from "vue-i18n";
 Vue.use(VueI18n);

@@ -1749,6 +1749,13 @@ amdefine@>=0.0.4:
   resolved "https://registry.nlark.com/amdefine/download/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
   integrity sha1-SlKCrBZHKek2Gbz9OtFR+BfOkfU=
 
+andrelib@0.0.9:
+  version "0.0.9"
+  resolved "https://registry.yarnpkg.com/andrelib/-/andrelib-0.0.9.tgz#b9f1c374fa8cded0a21306746b7c90d9f26177df"
+  integrity sha512-ra9RCU6MXGFx7NPpPnm+6j0+RhuaAgcLkCxpIb2WLMpP6Gyycr0vYi07rPn2sIe/h0w2VwhKm/cKdctxdEOeYA==
+  dependencies:
+    core-js "^3.15.2"
+
 ansi-colors@^3.0.0:
   version "3.2.4"
   resolved "https://registry.npm.taobao.org/ansi-colors/download/ansi-colors-3.2.4.tgz#e3a3da4bfbae6c86a9c285625de124a234026fbf"

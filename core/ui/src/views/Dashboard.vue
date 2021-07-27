@@ -8,6 +8,11 @@
     <div class="bx--row">
       <div class="bx--col-lg-16">
         <cv-tile :light="true" class="content-tile">
+          <NsButton kind="primary" :icon="Flash20">asdf</NsButton>
+
+          <div>{{ getErrorMessage({ testError: "test" }) }}</div>
+          <!-- <div>{{ testFun() }}</div> -->
+
           <h4>Add module</h4>
           <cv-form @submit.prevent="addModule">
             <cv-text-input
@@ -257,13 +262,15 @@
 
 <script>
 // import AreaChart from "@/components/AreaChart"; ////
-import NsButton from "@/components/NsButton"; ////
+// import NsButton from "@/components/NsButton"; ////
 import Flash20 from "@carbon/icons-vue/es/flash/20";
 // import Filter16 from "@carbon/icons-vue/es/filter/16"; ////
 import { mapState } from "vuex";
 import NotificationService from "@/mixins/notification";
-import UtilService from "@/mixins/util";
-import QueryParamService from "@/mixins/queryParam";
+// import UtilService from "@/mixins/util"; ////
+import UtilService from "@/../public/libs/util.js";
+// import QueryParamService from "@/mixins/queryParamLib"; ////
+// // import QueryParamService from "@/../public/libs/queryParamLib"; //// ////
 import NsInlineNotification from "@/components/NsInlineNotification";
 import { formatRelative, subDays } from "date-fns";
 import TaskService from "@/mixins/task";
@@ -271,14 +278,16 @@ import to from "await-to-js";
 import WebSocketService from "@/mixins/websocket";
 import { v4 as uuidv4 } from "uuid";
 
-let nethserver = window.nethserver;
+// let ns8lib = window.ns8lib; ////
+
+let queryParamLib = window.queryParamLib;
 
 export default {
   name: "Dashboard",
-  components: { NsButton, NsInlineNotification },
+  components: { /*NsButton,*/ NsInlineNotification },
   mixins: [
     NotificationService,
-    QueryParamService,
+    // QueryParamService, ////
     TaskService,
     WebSocketService,
     UtilService,
@@ -322,13 +331,13 @@ export default {
   beforeRouteEnter(to, from, next) {
     next((vm) => {
       console.log("beforeRouteEnter", to, from); ////
-      nethserver.watchQueryData(vm);
-      vm.queryParamsToData(vm, to.query);
+      queryParamLib.watchQueryData(vm);
+      queryParamLib.queryParamsToDataForCore(vm, to.query);
     });
   },
   beforeRouteUpdate(to, from, next) {
     console.log("beforeRouteUpdate", to, from); ////
-    this.queryParamsToData(this, to.query);
+    queryParamLib.queryParamsToDataForCore(this, to.query);
     next();
   },
   methods: {

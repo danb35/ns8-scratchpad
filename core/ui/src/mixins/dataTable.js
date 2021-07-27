@@ -1,4 +1,4 @@
-import UtilService from "@/mixins/util";
+import UtilService from "@/../public/libs/util.js";
 
 export default {
   name: "DataTableService",

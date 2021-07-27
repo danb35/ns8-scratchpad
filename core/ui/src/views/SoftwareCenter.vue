@@ -242,18 +242,20 @@
 import NsInlineNotification from "../components/NsInlineNotification.vue";
 import IconService from "@/mixins/icon";
 import AppList from "@/components/AppList";
-import QueryParamService from "@/mixins/queryParam";
+// import QueryParamService from "@/../public/libs/queryParamLib"; ////
 import NsEmptyState from "@/components/NsEmptyState";
 import Love from "../components/pictograms/Love";
-import NsButton from "@/components/NsButton";
+// import NsButton from "@/components/NsButton"; ////
 import NsTile from "@/components/NsTile";
 import to from "await-to-js";
-import UtilService from "@/mixins/util";
+import UtilService from "@/../public/libs/util.js";
 import TaskService from "@/mixins/task";
 import NodeService from "@/mixins/node";
 import { mapActions } from "vuex";
 
-let nethserver = window.nethserver;
+// let ns8lib = window.ns8lib; ////
+
+let queryParamLib = window.queryParamLib;
 
 export default {
   name: "SoftwareCenter",
@@ -262,16 +264,9 @@ export default {
     AppList,
     NsEmptyState,
     Love,
-    NsButton,
     NsTile,
   },
-  mixins: [
-    IconService,
-    QueryParamService,
-    UtilService,
-    TaskService,
-    NodeService,
-  ],
+  mixins: [IconService, UtilService, TaskService, NodeService],
   data() {
     return {
       q: {
@@ -512,12 +507,12 @@ export default {
   },
   beforeRouteEnter(to, from, next) {
     next((vm) => {
-      nethserver.watchQueryData(vm);
-      vm.queryParamsToData(vm, to.query);
+      queryParamLib.watchQueryData(vm);
+      queryParamLib.queryParamsToDataForCore(vm, to.query);
     });
   },
   beforeRouteUpdate(to, from, next) {
-    this.queryParamsToData(this, to.query);
+    queryParamLib.queryParamsToDataForCore(this, to.query);
     next();
   },
   created() {

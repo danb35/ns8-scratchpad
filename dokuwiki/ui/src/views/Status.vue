@@ -7,6 +7,9 @@
     </div>
     <div class="bx--row">
       <div class="bx--col-md-4">
+        <!-- //// -->
+        <cv-text-input label="label" v-model.trim="q.test" class="mg-bottom">
+        </cv-text-input>
         <NsInfoCard
           v-if="!loading.status"
           light
@@ -194,24 +197,27 @@
 import to from "await-to-js";
 import TaskService from "@/mixins/task";
 import { mapState } from "vuex";
-import NsStatusCard from "@/components/NsStatusCard";
 import NsInfoCard from "@/components/NsInfoCard";
 import NsSystemdServiceCard from "@/components/NsSystemdServiceCard";
 import Application32 from "@carbon/icons-vue/es/application/32";
 import EdgeNode32 from "@carbon/icons-vue/es/edge-node/32";
 import Cube32 from "@carbon/icons-vue/es/cube/32";
 import NsEmptyState from "@/components/NsEmptyState";
+// import QueryParamService from "@/../../../core/ui/public/libs//queryParamLib.js"; ////
 
-let nethserver = window.nethserver;
+// let ns8lib = window.ns8lib; ////
+
+let queryParamLib = window.queryParamLib;
 
 export default {
   name: "Status",
-  components: { NsStatusCard, NsInfoCard, NsSystemdServiceCard, NsEmptyState },
+  components: { NsInfoCard, NsSystemdServiceCard, NsEmptyState },
   mixins: [TaskService],
   data() {
     return {
       q: {
         page: "status",
+        test: "", ////
       },
       urlCheckInterval: null,
       isRedirectChecked: false,
@@ -265,8 +271,8 @@ export default {
   },
   beforeRouteEnter(to, from, next) {
     next((vm) => {
-      nethserver.watchQueryData(vm);
-      vm.urlCheckInterval = nethserver.initUrlBinding(vm, vm.q.page);
+      queryParamLib.watchQueryData(vm);
+      vm.urlCheckInterval = queryParamLib.initUrlBindingForApp(vm, vm.q.page);
     });
   },
   beforeRouteLeave(to, from, next) {

@@ -13,6 +13,9 @@ axios.defaults.timeout = 10000;
 import VueAxios from "vue-axios";
 Vue.use(VueAxios, axios);
 
+import andrelib from "andrelib"; ////
+Vue.use(andrelib);
+
 // i18n
 import VueI18n from "vue-i18n";
 

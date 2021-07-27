@@ -1,4 +1,4 @@
-import NsButton from "../components/NsButton.vue";
+import { NsButton } from "andrelib"; ////
 import Save from "@carbon/icons-vue/es/save/20";
 
 export default {
@@ -38,6 +38,7 @@ Default.args = {
   slotContent: `Button text`,
   kind: "default",
   value: "selected",
+  loading: false,
 };
 
 export const Icon = Template.bind({});
@@ -46,4 +47,5 @@ Icon.args = {
   kind: "default",
   icon: Save,
   value: "selected",
+  loading: false,
 };

@@ -47,8 +47,11 @@ import Catalog20 from "@carbon/icons-vue/es/catalog/20";
 import Information20 from "@carbon/icons-vue/es/information/20";
 import Activity20 from "@carbon/icons-vue/es/activity/20";
 import { mapState } from "vuex";
+// import QueryParamService from "@/../../../core/ui/public/libs//queryParamLib.js"; ////
 
-let nethserver = window.nethserver;
+// let ns8lib = window.ns8lib; ////
+
+let queryParamLib = window.queryParamLib;
 
 export default {
   name: "AppSideMenuContent",
@@ -58,6 +61,7 @@ export default {
     Information20,
     Activity20,
   },
+  // mixins: [QueryParamService], ////
   data() {
     return {
       instanceNameSkeletonWidth: "70%",
@@ -76,7 +80,7 @@ export default {
   },
   methods: {
     isLinkActive(page) {
-      return nethserver.getPage() === page;
+      return queryParamLib.getPage() === page;
     },
     //// move to mixin
     goToPath(path) {

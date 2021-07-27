@@ -115,14 +115,17 @@ import to from "await-to-js";
 import TaskService from "@/mixins/task";
 import IconService from "@/mixins/icon";
 import { mapState } from "vuex";
-import NsButton from "@/components/NsButton";
-import UtilService from "@/mixins/util";
+// import NsButton from "@/components/NsButton"; ////
+import UtilService from "@/../../../core/ui/public/libs//util.js";
+// import QueryParamService from "@/../../../core/ui/public/libs//queryParamLib.js"; ////
 
-let nethserver = window.nethserver;
+// let ns8lib = window.ns8lib; ////
+
+let queryParamLib = window.queryParamLib;
 
 export default {
   name: "Settings",
-  components: { NsButton },
+  // components: { NsButton }, ////
   mixins: [TaskService, IconService, UtilService],
   data() {
     return {
@@ -175,8 +178,8 @@ export default {
   },
   beforeRouteEnter(to, from, next) {
     next((vm) => {
-      nethserver.watchQueryData(vm);
-      vm.urlCheckInterval = nethserver.initUrlBinding(vm, vm.q.page);
+      queryParamLib.watchQueryData(vm);
+      vm.urlCheckInterval = queryParamLib.initUrlBindingForApp(vm, vm.q.page);
     });
   },
   beforeRouteLeave(to, from, next) {

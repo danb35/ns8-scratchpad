@@ -254,26 +254,22 @@
 <script>
 import TaskService from "@/mixins/task";
 import to from "await-to-js";
-import UtilService from "@/mixins/util";
+import UtilService from "@/../public/libs/util.js";
 import IconService from "@/mixins/icon";
-import QueryParamService from "@/mixins/queryParam";
+// import QueryParamService from "@/../public/libs/queryParamLib"; ////
 import NsEmptyState from "@/components/NsEmptyState";
-import NsButton from "@/components/NsButton";
+// import NsButton from "@/components/NsButton"; ////
 import DataTableService from "../mixins/dataTable";
 import NsInlineNotification from "../components/NsInlineNotification.vue";
 
-let nethserver = window.nethserver;
+// let ns8lib = window.ns8lib; ////
+
+let queryParamLib = window.queryParamLib;
 
 export default {
   name: "SettingsSoftwareRepository",
-  components: { NsEmptyState, NsButton, NsInlineNotification },
-  mixins: [
-    TaskService,
-    UtilService,
-    IconService,
-    QueryParamService,
-    DataTableService,
-  ],
+  components: { NsEmptyState, NsInlineNotification },
+  mixins: [TaskService, UtilService, IconService, DataTableService],
   data() {
     return {
       q: {
@@ -312,12 +308,12 @@ export default {
   },
   beforeRouteEnter(to, from, next) {
     next((vm) => {
-      nethserver.watchQueryData(vm);
-      vm.queryParamsToData(vm, to.query);
+      queryParamLib.watchQueryData(vm);
+      queryParamLib.queryParamsToDataForCore(vm, to.query);
     });
   },
   beforeRouteUpdate(to, from, next) {
-    this.queryParamsToData(this, to.query);
+    queryParamLib.queryParamsToDataForCore(this, to.query);
     next();
   },
   created() {

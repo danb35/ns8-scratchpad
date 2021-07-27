@@ -22,12 +22,16 @@
 <script>
 import NsEmptyState from "@/components/NsEmptyState";
 import Bulldozer from "../components/pictograms/Bulldozer";
+// import QueryParamService from "@/../../../core/ui/public/libs//queryParamLib.js"; ////
 
-let nethserver = window.nethserver;
+// let ns8lib = window.ns8lib; ////
+
+let queryParamLib = window.queryParamLib;
 
 export default {
   name: "Logs",
   components: { NsEmptyState, Bulldozer },
+  // mixins: [QueryParamService], ////
   data() {
     return {
       q: {
@@ -38,8 +42,8 @@ export default {
   },
   beforeRouteEnter(to, from, next) {
     next((vm) => {
-      nethserver.watchQueryData(vm);
-      vm.urlCheckInterval = nethserver.initUrlBinding(vm, vm.q.page);
+      queryParamLib.watchQueryData(vm);
+      vm.urlCheckInterval = queryParamLib.initUrlBindingForApp(vm, vm.q.page);
     });
   },
   beforeRouteLeave(to, from, next) {
